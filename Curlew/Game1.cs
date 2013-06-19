@@ -24,6 +24,8 @@ namespace Curlew
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
+
+            Components.Add(new InputManager(this));
         }
 
         /// <summary>
@@ -67,10 +69,10 @@ namespace Curlew
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Update(GameTime gameTime)
         {
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
+            if (InputManager.KeyPressed(Keys.Escape)) {
                 Exit();
+            }
 
-            // TODO: Add your update logic here
 
             base.Update(gameTime);
         }
